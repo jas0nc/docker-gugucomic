@@ -1,5 +1,5 @@
 FROM php:7.4-apache
-LABEL maintainer="dev@chialab.io"
+LABEL maintainer="jas0nc"
 
 # Download script to install PHP extensions and dependencies
 ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
@@ -18,7 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
 
 #copy website files to image
 COPY cartoonmad/ /var/www/html
-VOLUME cartoonmad/config/ /var/www/html/config
-VOLUME cartoonmad/CBZ /var/www/html/CBZ
+VOLUME sample-config /var/www/html/config
+VOLUME sample-CBZ /var/www/html/CBZ
 
 EXPOSE 80
