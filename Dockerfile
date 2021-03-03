@@ -21,6 +21,4 @@ WORKDIR /var/www/html
 COPY sample-config/ /config
 COPY sample-CBZ/ /CBZ
 
-ENTRYPOINT [/init]
-
 EXPOSE 80
