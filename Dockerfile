@@ -8,17 +8,19 @@ RUN chmod uga+x /usr/local/bin/install-php-extensions && sync
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
     && DEBIAN_FRONTEND=noninteractive apt-get install -qq -y \
-      curl \
-      git \
-      zip unzip \
+      zip \
     && install-php-extensions \
-      bz2 \
       gd \
       zip
 
 #copy website files to image
 COPY cartoonmad/ /var/www/html
-VOLUME /var/www/html/config
-VOLUME /var/www/html/CBZ
+RUN chmod +x -R /var/www/html
+
+WORKDIR /var/www/html
+VOLUME [/config]
+VOLUME [/CBZ]
+COPY sample-config/ ./config
+COPY sample-CBZ/ ./CBZ
 
 EXPOSE 80
