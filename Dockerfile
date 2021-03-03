@@ -18,9 +18,9 @@ COPY cartoonmad/ /var/www/html
 RUN chmod +x -R /var/www/html
 
 WORKDIR /var/www/html
-VOLUME [/config]
-VOLUME [/CBZ]
-COPY sample-config/ ./config
-COPY sample-CBZ/ ./CBZ
+COPY sample-config/ /config
+COPY sample-CBZ/ /CBZ
+
+ENTRYPOINT [/init]
 
 EXPOSE 80
