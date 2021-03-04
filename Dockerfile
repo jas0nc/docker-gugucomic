@@ -14,11 +14,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -q \
       zip
 
 #copy website files to image
-COPY cartoonmad/ /var/www/html
+COPY gugucomic-cartoonmad/ /var/www/html
 RUN chmod +x -R /var/www/html
-
-WORKDIR /var/www/html
-COPY sample-config/ /config
-COPY sample-CBZ/ /CBZ
+ADD sample-config/ /var/www/html/config
+ADD sample-CBZ/ /var/www/html/CBZ
+VOLUME ['/var/www/html/config']
+VOLUME ['/var/www/html/CBZ']
 
 EXPOSE 80
